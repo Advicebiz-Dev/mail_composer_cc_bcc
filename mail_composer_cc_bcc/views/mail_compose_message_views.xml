@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_compose_message_view_form_cc_bcc" model="ir.ui.view">
+        <field name="name">mail.compose.message.form.cc.bcc</field>
+        <field name="model">mail.compose.message</field>
+        <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='subject']" position="before">
+                <field name="email_cc" invisible="1"/>
+                <field name="email_bcc" invisible="1"/>
+                <field name="cc_partner_ids" widget="many2many_tags_email"
+                       placeholder="Pesquisar contactos ou introduzir um email..."
+                       invisible="composition_mode != 'comment' or subtype_is_log"/>
+                <field name="bcc_partner_ids" widget="many2many_tags_email"
+                       placeholder="Pesquisar contactos ou introduzir um email..."
+                       invisible="composition_mode != 'comment' or subtype_is_log"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

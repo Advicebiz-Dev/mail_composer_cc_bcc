@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mail_composer_cc_bcc.CcBccRecipientsInput">
+        <div class="o-mail-RecipientsInput d-flex flex-wrap flex-grow-1 align-items-center gap-1 mx-1" t-ref="recipientsInputRef">
+            <RecipientsInputTagsList tags="this.getTagsFromMailThread()" updateRecipient.bind="updateRecipient"/>
+            <div class="flex-grow-1">
+                <AutoComplete placeholder="this.getPlaceholder()" sources="this.getAutoCompleteSources()"/>
+            </div>
+        </div>
+    </t>
+    <t t-name="mail_composer_cc_bcc.ChatterCcBcc" t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <xpath expr="//RecipientsInput[@thread='state.thread']/.." position="after">
+            <div class="o-mail-Chatter-cc d-flex py-1 ps-3 align-items-center">
+                <label class="flex-shrink-0 text-end fw-bold px-2 mb-0" style="width:46px">CC:</label>
+                <CcBccRecipientsInput thread="state.thread" kind="'cc'"/>
+            </div>
+            <div class="o-mail-Chatter-bcc d-flex py-1 ps-3 align-items-center">
+                <label class="flex-shrink-0 text-end fw-bold px-2 mb-0" style="width:46px">BCC:</label>
+                <CcBccRecipientsInput thread="state.thread" kind="'bcc'"/>
+            </div>
+        </xpath>
+    </t>
+</templates>

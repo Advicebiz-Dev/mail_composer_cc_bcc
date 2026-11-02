@@ -1,0 +1,16 @@
+19.0.1.9.0 — CC/BCC no envio de faturas Odoo 19
+
+- O envio da fatura usa account.move.send.wizard, e não mail.compose.message:
+  adicionados CC e BCC com pesquisa por contactos e entrada de endereços.
+- Propagação integral dos endereços escolhidos desde o wizard, através do
+  account.move.send, até ao message_post no envio efetivo.
+- Conservação da listagem dos destinatários Para, CC e BCC no Chatter.
+- Cópias CC/BCC mantêm anexos associados à mensagem, incluindo PDF de fatura.
+- Um endereço presente em Para e CC/BCC é tratado como Para.
+- Permanecem as proteções existentes dos botões e rodapés em quotations.
+- A nova dependência "account" é necessária para herdar as vistas/modelos.
+
+Atenção: este módulo cobre o compositor de email padrão, o Chatter e o
+assistente individual de faturas do Odoo 19. Fluxos de mailing em massa,
+envio automático sem janela ou assistentes específicos de terceiros podem
+necessitar de implementações adicionais. Requer teste SMTP em DEV/PRE.

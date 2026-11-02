@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mail_composer_cc_bcc.MessageRecipients"
+       t-inherit="mail.Message"
+       t-inherit-mode="extension">
+        <xpath expr="//div[contains(@class, 'o-mail-Message-contentContainer')]" position="after">
+            <div t-if="env.inChatter and !message.isNote and (message.outgoing_email_to_display or message.outgoing_email_cc or message.outgoing_email_bcc)"
+                 class="o-mail-Message-outgoingRecipients small text-muted mt-1 mb-1 pe-2">
+                <div t-if="message.outgoing_email_to_display" class="d-flex">
+                    <strong class="me-1 flex-shrink-0">Para:</strong>
+                    <span class="text-break" t-esc="message.outgoing_email_to_display"/>
+                </div>
+                <div t-if="message.outgoing_email_cc" class="d-flex">
+                    <strong class="me-1 flex-shrink-0">CC:</strong>
+                    <span class="text-break" t-esc="message.outgoing_email_cc"/>
+                </div>
+                <div t-if="message.outgoing_email_bcc" class="d-flex">
+                    <strong class="me-1 flex-shrink-0">BCC:</strong>
+                    <span class="text-break" t-esc="message.outgoing_email_bcc"/>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>
+

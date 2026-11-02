@@ -1,0 +1,6 @@
+19.0.1.8.1 — Correção da seleção de destinatários Para nas quotations
+- Correspondência dos destinatários do Odoo 19 pelo id de res.partner (o campo email_normalized não está garantido em recipients_data).
+- Link da quotation baseado em portal.mixin, com token do próprio documento.
+- CC/BCC excluídos dos destinatários do layout de cliente.
+- Dependência explícita de sale.
+- Esta versão exige testes funcionais SMTP em DEV/PRE com mais de um Para, CC e BCC.

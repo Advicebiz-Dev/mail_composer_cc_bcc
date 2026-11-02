@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Odoo 19 invoices use this wizard, not mail.compose.message. -->
+    <record id="account_move_send_wizard_form_cc_bcc" model="ir.ui.view">
+        <field name="name">account.move.send.wizard.form.cc.bcc</field>
+        <field name="model">account.move.send.wizard</field>
+        <field name="inherit_id" ref="account.account_move_send_wizard_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mail_partner_ids']/.." position="after">
+                <label for="cc_partner_ids" string="CC"/>
+                <div>
+                    <field name="email_cc" invisible="1"/>
+                    <field name="cc_partner_ids" widget="many2many_tags_email"
+                           placeholder="Pesquisar contactos ou introduzir um email..."
+                           context="{'show_email': True, 'form_view_ref': 'base.view_partner_simple_form'}"/>
+                </div>
+                <label for="bcc_partner_ids" string="BCC"/>
+                <div>
+                    <field name="email_bcc" invisible="1"/>
+                    <field name="bcc_partner_ids" widget="many2many_tags_email"
+                           placeholder="Pesquisar contactos ou introduzir um email..."
+                           context="{'show_email': True, 'form_view_ref': 'base.view_partner_simple_form'}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
